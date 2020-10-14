@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import Chart from 'chart.js';
 import axios from 'axios';
-import PieChart from '../PieChart/PieChart';
+import DoughnutChart from '../DoughnutChart/DoughnutChart';
 
 
 function HomePage() {
@@ -100,8 +100,8 @@ function HomePage() {
         </article>
        
         <article className="text-box">
-          <h1>D3 Pie Chart</h1>
-          <PieChart/> 
+          <h1>Doughnut Chart</h1>
+          <DoughnutChart/> 
         </article>
         
         <article className="text-box">

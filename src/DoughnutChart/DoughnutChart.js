@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import * as d3 from "d3";
 import axios from "axios";
 
-function PieChart(props) {
+function DoughnutChart(props) {
   const [data, setdata] = useState([]);
   var dataSource = {
     datasets: [
@@ -120,4 +120,4 @@ function PieChart(props) {
   return <div id="pie-container" />;
 }
 
-export default PieChart;
+export default DoughnutChart;
