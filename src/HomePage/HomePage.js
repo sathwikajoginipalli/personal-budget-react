@@ -1,6 +1,42 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+import Chart from 'chart.js';
+import axios from 'axios';
+import PieChart from '../PieChart/PieChart';
+
 
 function HomePage() {
+  var dataSource = {
+    datasets: [
+      {
+        data: [],
+        backgroundColor: [
+          "#ff6384",
+          "#36a2eb",
+          "#fd6b19",
+          "#8a89a6",
+          "#a05d56",
+          "#7b6888",
+          "#d0743c",
+          "#98abc5",
+        ],
+      },
+    ],
+    labels: [],
+  };
+  
+  useEffect(() => {
+    axios.get('http://localhost:3001/budget').then((res)=>{
+        for (var i = 0; i < res.data.length; i++) {
+          dataSource.datasets[0].data[i] = res.data[i].budget;
+          dataSource.labels[i] = res.data[i].title;
+        }
+      const ctx = document.getElementById("myChart");
+      new Chart(ctx, {
+        type: "pie",
+        data: dataSource,
+      });
+      });
+  });
   return (
     <main className="container center" id="main">
       <div className="page-area">
@@ -64,9 +100,8 @@ function HomePage() {
         </article>
        
         <article className="text-box">
-          <h1>Doughnut-Chart</h1>
-          <button className="randomize">randomize</button>
-          <div id="chart"></div>  
+          <h1>D3 Pie Chart</h1>
+          <PieChart/> 
         </article>
         
         <article className="text-box">
